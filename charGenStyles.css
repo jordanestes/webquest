@@ -1,0 +1,48 @@
+#startPage {
+	text-align:center;
+}
+
+/* Font Styles */
+
+/* Button Styles */
+
+/* Dark Mode */
+body {
+  background-color: black;
+  color:white;
+  font-family: monospace;
+}
+
+
+#hero {
+		max-width:50%;
+}
+
+#hero_small {
+		max-width: 20%;
+}
+
+ li {
+      list-style: none;
+      margin-bottom: 10px;
+    }
+#chooseClass {
+ 
+}
+
+#barbarianText, #bardText, #clericText, #druidText, #fighterText, #monkText, #paladinText, #rangerText, #rogueText, #sorcererText, #wizardText {
+  display: none;
+}
+
+#diceButtons {
+  max-width: 250px;
+  background-color: ;
+}
+
+#diceButtons button {
+  float: right;
+  border: 1px solid white;
+  background-color: black;
+  color:white;
+  font-size: 13px;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./charGenStyles.css">
+  <title>Character Generator | WebQuest RPG</title>
+</head>
+<body>
+<h1>Create a new character</h1>
+<label for="nameInput">You shall be known as:</label><p id="message" style="display: none;"></p>
+  <input placeholder="Name" type="text" id="nameInput">
+  <button onclick="saveName()">Save Name</button>
+    
+  <hr>
+<div id="diceButtons">  
+<h3>Roll Your Ability Scores</h3>
+<p style="color:red">Roll in order from top to bottom:</p>
+
+
+Strength:<button id="button1" onclick="rollDice('button1', 'Strength')">Roll Dice</button><span id="result1"></span><span style="color:yellow" id="strModifierText"></span>
+<br><br>
+Dexterity:<button id="button2" onclick="rollDice('button2', 'Dexterity')">Roll Dice</button><span id="result2"></span><span style="color:yellow" id="dexModifierText"></span>
+<br><br>
+Constitution:<button id="button3" onclick="rollDice('button3', 'Constitution')">Roll Dice</button><span id="result3"></span><span style="color:yellow" id="conModifierText"></span>
+<br><br>
+Intelligence:<button id="button4" onclick="rollDice('button4', 'Intelligence')">Roll Dice</button><span id="result4"></span><span style="color:yellow" id="intModifierText"></span>
+<br><br>
+Wisdom:<button id="button5" onclick="rollDice('button5', 'Wisdom')">Roll Dice</button><span id="result5"></span><span style="color:yellow" id="wisModifierText"></span>
+<br><br>
+Charisma:<button id="button6" onclick="rollDice('button6', 'Charisma')">Roll Dice</button><span id="result6"></span><span style="color:yellow" id="chaModifierText"></span>
+</div>
+
+<span style="font-weight:900;"><p id="totalResult"></p></span>
+
+<hr>
+
+<!-- Classes -->
+<div id="chooseClass">
+<h3>Choose Your Class:</h3>
+<p><em>Based on your ability score results, your recommended class would be: <span style="color:yellow" id="suggestedClass"></span></em></p>
+<form>
+  <label for="charClassDropdown">Select a class:</label>
+  <select id="charClassDropdown" onchange="showClassContent()">
+    <option value="none"></option>
+    <option value="barbarian">Barbarian</option>
+    <option value="bard">Bard</option>
+    <option value="cleric">Cleric</option>
+    <option value="druid">Druid</option>
+    <option value="fighter">Fighter</option>
+    <option value="monk">Monk</option>
+    <option value="paladin">Paladin</option>
+    <option value="ranger">Ranger</option>
+    <option value="rogue">Rogue</option>
+    <option value="sorcerer">Sorcerer</option>
+    <option value="wizard">Wizard</option>
+  </select>
+</form>
+  <div id="barbarianText">
+    <p><strong>Barbarian:</strong> <em>A ferocious warrior who uses fury and instinct to bring down foes.</em></p>
+    <p><strong>Abilities:</strong> Strength is important for barbarians because of its role
+in combat, and several barbarian class skills are based on Strength. Dexterity is also useful to barbarians, especially those who wear light armor. Wisdom is also important for several of the barbarian’s class skills. A high Constitution score lets a barbarian rage longer (and live longer, because it gives him more hit points).</p>
+<p>Hit Points Gained Per Level: <strong>d12.</strong></p>
+<p><strong>Class skills</strong>
+  <p>Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha), Jump (Str), Listen (Wis), Ride (Dex), Survival (Wis), Swim (Str)</p>
+<p>Skill Points at 1st Level: <strong>(4 + Int modifier) × 4.</strong></p>
+<p>Skill Points at Each Additional Level: <strong>4 + Int modifier.</strong></p>
+<p><strong>Lv1 Class Features</strong></p>
+<p>Weapon and Armor Proficiency, Illiteracy, Rage (1x per day, +4 STR, a
++4 CON, -2 AC)</p>
+  </div>
+    <div id="bardText">
+    <p><strong>Bard:</strong> A performer whose music works magic—a wanderer, a tale- teller, and a jack-of-all trades.</p>
+  </div>
+    <div id="clericText">
+    <p><strong>Cleric:</strong> A master of divine magic and a capable warrior as well.</p>
+  </div>
+  <div id="druidText">
+    <p><strong>Druid:</strong> One who draws energy from the natural world to cast divine spells and gain strange magical powers.</p>
+  </div>
+  <div id="fighterText">
+    <p><strong>Fighter:</strong>A warrior with exceptional combat capability and unequaled skill with weapons.</p>
+  </div>
+  <div id="monkText">
+    <p><strong>Monk:</strong>A martial artist whose unarmed strikes hit fast and hard— a master of exotic powers.</p>
+  </div>
+  <div id="paladinText">
+    <p><strong>Paladin:</strong>A champion of justice and destroyer of evil, protected and strengthened by an array of divine powers.</p>
+  </div>
+  <div id="rangerText">
+    <p><strong>Ranger:</strong>A cunning, skilled warrior of the wilderness.</p>
+  </div>
+  <div id="rogueText">
+    <p><strong>Rogue:</strong>A tricky, skillful scout and spy who wins the battle by stealth rather than brute force.</p>
+  </div>
+  <div id="sorcererText">
+    <p><strong>Sorcerer:</strong>A spellcaster with inborn magical ability.</p>
+  </div>
+  <div id="wizardText">
+    <p><strong>Wizard:</strong>A potent spellcaster schooled in the arcane arts.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- Races -->
+<form>
+	<h3>Choose your Race:</h3>
+    <div style="column-count: 2;">
+		<label><input type="radio" name="race" value="Human" onclick="updateRaceSelection(this.value)"> Human</label>
+        <label><input type="radio" name="race" value="Half-Elf" onclick="updateRaceSelection(this.value)"> Half-Elf</label>
+        <label><input type="radio" name="race" value="Elf" onclick="updateRaceSelection(this.value)"> Elf</label>
+        <label><input type="radio" name="race" value="Half-Orc" onclick="updateRaceSelection(this.value)"> Half-Orc</label>
+        <label><input type="radio" name="race" value="Gnome" onclick="updateRaceSelection(this.value)"> Gnome</label>
+        <label><input type="radio" name="race" value="Halfling" onclick="updateRaceSelection(this.value)"> Halfling</label>
+        <label><input type="radio" name="race" value="Dwarf" onclick="updateRaceSelection(this.value)"> Dwarf</label>
+    </div>
+	<p id="raceResultText"></p>
+</form>
+
+<hr>
+<!-- Skills -->
+
+<h3>Choose your Skills:</h3>
+<p>You have <strong><span id="skillPointsText"></span></strong> unspent skill points.
+<ul>
+  <li id="alchemy">Alchemy (Int)<span id="points1">0</span> points</li>
+  <li id="animalEmpathy">Animal Empathy (Cha)<span id="points2">0</span> points</li>
+  <li id="appraise">Appraise (Int) <span id="points3">0</span> points</li>
+  <li id="autohypnosis">Autohypnosis (Wis)<span id="points4">0</span> points</li>
+  <li id="balance">Balance (Dex)<span id="points5">0</span> points</li>
+</ul>
+<hr>
+<!-- Feats -->
+
+<h3>Choose your Feats:</h3>
+<hr>
+<!-- Describe -->
+<h3>Describe your character:</h3>
+<textarea name="charDesc" style="width:400px; height:200px;"></textarea>
+<br>
+<button id="begin">Begin Your Journey...</button>
+
+<script type="text/javascript" src="charscript.js"></script>
+</body>
+</html>
