@@ -15,7 +15,7 @@
   <hr>
 <div id="diceButtons">  
 <h3>Roll Your Ability Scores</h3>
-<p style="color:red">Roll in order from top to bottom:</p>
+<p style="color:red">Roll in order:</p>
 
 
 Strength:<button id="button1" onclick="rollDice('button1', 'Strength')">Roll Dice</button><span id="result1"></span><span style="color:yellow" id="strModifierText"></span>
@@ -58,6 +58,7 @@ Charisma:<button id="button6" onclick="rollDice('button6', 'Charisma')">Roll Dic
 </form>
   <div id="barbarianText">
     <p><strong>Barbarian:</strong> <em>A ferocious warrior who uses fury and instinct to bring down foes.</em></p>
+    <p>As a Barbarian, your starting Hit Points: <span id="startingHpText"></span><em></em></p>
     <p><strong>Abilities:</strong> Strength is important for barbarians because of its role
 in combat, and several barbarian class skills are based on Strength. Dexterity is also useful to barbarians, especially those who wear light armor. Wisdom is also important for several of the barbarian’s class skills. A high Constitution score lets a barbarian rage longer (and live longer, because it gives him more hit points).</p>
 <p>Hit Points Gained Per Level: <strong>d12.</strong></p>
@@ -139,6 +140,11 @@ in combat, and several barbarian class skills are based on Strength. Dexterity i
 <h3>Describe your character:</h3>
 <textarea name="charDesc" style="width:400px; height:200px;"></textarea>
 <br>
+<hr>
+<h2>Lastly, Before You Begin:</h2>
+<p>Your starting Hit Points: <span id="startingHpText"></span><em> (based on class)</em></p>
+<p>Your character starts out with basic clothing, and some gold you were gifted to by family.</p>
+<p>Based on your chosen class, you will start with <span id="startingGoldText"></span> gp to spend on equipment and items.</p>
 <button id="begin">Begin Your Journey...</button>
 
 <script type="text/javascript" src="charscript.js"></script>

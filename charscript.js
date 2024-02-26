@@ -1,4 +1,21 @@
 
+// HP (Based on class choice)
+let startingHPText = document.querySelector("#startingHpText")
+let startingHP;
+startingHPText.innerText = 0;
+
+// Ability Scores
+let strength;
+let dexterity;
+let constitution;
+let intelligence;
+let wisdom;
+let charisma;
+
+// Gold (based on class choice)
+let startingGoldText = document.querySelector("#startingGoldText");
+let startingGold; 
+startingGoldText.innerText = "0";
 
 // Save Character name, need to change this for it to be accessible
 
@@ -8,14 +25,17 @@ let playerName;
 function saveName() {
 playerName = document.getElementById('nameInput').value;
 // Display the entered name in a message and hide the input field and button
-document.getElementById('message').innerText = 'Entered Name: ' + playerName;
+document.getElementById('message').innerText = 'Your character"s name will be ' + playerName;
 document.getElementById('nameInput').style.display = 'none';
 document.getElementsByTagName('button')[0].style.display = 'none';
 document.getElementById('message').style.display = 'block';
 }
+
+
 //Ability Score Dice Roll
 let totalSum = 0;
 let abilityScoreResults = [];// Array to store individual results globally
+
 
 function rollDice(buttonId, scoreName) {
   
@@ -67,11 +87,20 @@ function rollDice(buttonId, scoreName) {
     intMod();
     wisMod();
     chaMod();
-  } 
+
+    // Now that the rolls have been made, you can assign Results
+    strength = abilityScoreResults[0].result;
+    dexterity = abilityScoreResults[1].result;
+    constitution = abilityScoreResults[2].result;
+    intelligence = abilityScoreResults[3].result;
+    wisdom = abilityScoreResults[4].result;
+    charisma = abilityScoreResults[5].result; 
+  }
 
 }
 
- 
+
+
 // Calculate Ability Modifiers (each one individially)
 // Strength Mod
 let strModifierText = document.querySelector('#strModifierText');
@@ -314,6 +343,7 @@ function suggestAClass() {
 }
  
 
+
 function showClassContent() {
       var charClassDropdown = document.getElementById("charClassDropdown");
       var bbnContent = document.getElementById("barbarianText");
@@ -344,6 +374,11 @@ function showClassContent() {
 
       if (charClassDropdown.value === "barbarian") {
           bbnContent.style.display = "block";
+          startingGold = 100;
+          startingGoldText.innerText = '100';
+
+          startingHP = 12 + conModifier;
+          startingHPText.innerText = startingHP;
       } else if (charClassDropdown.value === "bard") {
           brdContent.style.display = "block";
       } else if (charClassDropdown.value === "cleric") {
@@ -364,8 +399,12 @@ function showClassContent() {
           rogContent.style.display = "block";
       } else if (charClassDropdown.value === "sorcerer"){
           sorContent.style.display = "block";
+          startingHP = 4 + conModifier;
+          startingHPText.innerText = startingHP;
       } else if (charClassDropdown.value === "wizard") {
           wizContent.style.display = "block";
+          startingHP = 4 + conModifier;
+          startingHPText.innerText = startingHP;
       }
     } 
     
@@ -424,6 +463,7 @@ const races = [
   }
 ]
 
+
 // Choose Class
 var selectedClass;
 function updateClassSelection(value) {
@@ -434,6 +474,8 @@ function updateClassSelection(value) {
         document.getElementById("raceResultText").innerText += "\n \n Racial Trait Bonuses: " + races[0].racialBonuses;
         document.getElementById("raceResultText").innerText += "\n \n Ability Score Adjustments: " + races[0].adjustments;
         document.getElementById("raceResultText").innerText += "\n \n Favored Class: " + races[0].favoredClass;
+        
+
         }
       }
 
@@ -494,3 +536,8 @@ function updateClassSelection(value) {
 let skillPointsRemaining = 0;
 const skillPointsText = document.querySelector("#skillPointsText");
 skillPointsText.innerText = skillPointsRemaining;
+
+
+
+// Final Calculations: HP, Gold
+
