@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>WebQuest RPG</title>
+  </head>
+  <body>
+   
+	<div id="game">
+	  <div id="stats">
+		<span class="stat">Lv: <strong><span id="lvlText">1</span></strong></span>
+        <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+        <span class="stat">HP: <strong><span id="healthText">100</span></strong></span>
+        <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+		<button id="button4">Character Sheet</button>
+		<button id="button6">Inventory</button>
+		<!--<button id="button6">Logbook</button>-->
+      </div>
+      
+	  <!--Inventory-->
+	  <div id="openInventory">
+	    <p><strong>Weapons:</strong></p>
+		<p id="myWeaponsText"></p><span id="myWeaponsDamage"></span>
+	  </div>
+	  
+	  <!--Character Sheet-->
+	  <div id="characterSheet">
+        <span class="stat">Character Name: <strong><span id="charNameText"></span></strong></span>
+        <span class="stat">Class: <strong><span id=></span></strong></span>
+		<span class="stat">Race: <strong><span id=""></span></strong></span>
+		    <hr>
+		<span class="stat">Initiative: <strong><span id=""></span></strong></span>
+		<span class="stat">Armor Class: <strong><span id=""></span></strong></span>
+		<hr>
+		<span class="stat">Strength: <strong><span id=""></span></strong></span>
+		<br>
+		<span class="stat">Dexterity: <strong><span id=""></span></strong></span>
+		<br>
+		<span class="stat">Constitution: <strong><span id=""></span></strong></span>
+		<br>
+		<span class="stat">Wisdom: <strong><span id=""></span></strong></span>
+		<br>
+		<span class="stat">Intelligence: <strong><span id=""></span></strong></span>
+		<br>
+		<span class="stat">Charisma: <strong><span id=""></span></strong></span>
+		<hr>
+		<span class="stat">Fortitude: <strong><span id="fortitudeText"></span></strong></span>
+		<span class="stat">Reflex: <strong><span id="reflexText"></span></strong></span>
+		<span class="stat">Will: <strong><span id="willText"></span></strong></span>
+		<br>
+		<span class="stat">Base Attack Bonus: <strong><span id="baseAttackText"></span></strong></span>
+		<span class="stat">Base Attack Damage: <strong><span id="baseDamageText"></span></strong></span>
+		<br>
+      </div>
+	  
+	  <!--Monster Stats-->
+      <div id="monsterStats">
+        <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+        <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+      </div>
+	  
+	  <!--Main Text Box -->
+      <div id="text">
+        Welcome to WebQuest RPG. In this game you must <strong><span style="color:purple">complete bounties,</span> <span style="color:darkred">defeat monsters,</span> <span style="color:gold">earn gold and</span> <span style="color:limegreen">level up</span></strong> to defeat the evil that is preventing people from leaving the town. 
+		<br><br>You are in the town square. Where do you want to go? Use the buttons below.
+      </div>
+	  
+	  <!-- Controls -->
+	  <div id="controls">
+        <button id="button1">Go to store</button>
+        <button id="button2">Go to cave</button>
+        <button id="button3">Fight dragon</button>
+		<button id="button5">Check Bounty Board</button>
+      </div>
+	  
+    </div>
+    <script src="./scripts.js"></script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Xanh+Mono:ital@0;1&display=swap');
+
+body {
+  background-color: black ;
+  color: white;
+}
+
+h1 {
+	margin-top: 0px;
+	margin-bottom:10px;
+}
+
+#text {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 30px;
+	border: 1px dotted white;
+	font-family: "Roboto Mono", monospace;
+	font-weight:normal;
+}
+
+#game {
+  max-width: 800px;
+  max-height: 1000px;
+  background-color: black;
+  margin: 30px auto 0px;
+  padding: 20px;
+  border: 2px solid white;
+}
+
+#controls{
+  text-align:center;
+  padding: 5px;
+}
+
+/* Top Bar */
+#stats {
+	padding: 20px;
+	margin-bottom:20px;
+	font-family: "Xanh Mono", monospace;
+	font-weight: 400;
+	font-style: normal;
+}
+
+
+.stat {
+  padding-right: 20px;
+  font-family: "Xanh Mono", monospace;
+}
+
+
+/* Character Sheet */
+#characterSheet {
+	display: none;
+	border:1px dotted yellow;
+	padding:10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* Inventory */
+#openInventory {
+	display: none;
+	border:1px dotted cyan;
+	padding:10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-family: "Xanh Mono", monospace;
+}
+
+/*Monster Box */
+#monsterStats {
+  margin-top:10px;
+  display: none;
+  border: 1px dotted red;
+  padding: 5px;
+  color: red;
+}
+
+/* Button Styles */
+button {
+  font-family: "Roboto Mono", monospace;
+  cursor: pointer;
+  font-weight: 400;
+  border: 1px solid white;
+  background-color:black;
+  color:white;
+  padding:5px;
+}
