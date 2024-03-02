@@ -1,8 +1,4 @@
 
-// HP (Based on class choice)
-let startingHPText = document.querySelector("#startingHpText")
-let startingHP;
-startingHPText.innerText = 0;
 
 // Ability Scores
 let strength;
@@ -13,7 +9,7 @@ let wisdom;
 let charisma;
 
 // Gold (based on class choice)
-let startingGoldText = document.querySelector("#startingGoldText");
+let startingGoldText = document.querySelector(".startingGoldText");
 let startingGold; 
 startingGoldText.innerText = "0";
 
@@ -25,7 +21,7 @@ let playerName;
 function saveName() {
 playerName = document.getElementById('nameInput').value;
 // Display the entered name in a message and hide the input field and button
-document.getElementById('message').innerText = 'Your character"s name will be ' + playerName;
+document.getElementById('message').innerText = playerName;
 document.getElementById('nameInput').style.display = 'none';
 document.getElementsByTagName('button')[0].style.display = 'none';
 document.getElementById('message').style.display = 'block';
@@ -35,6 +31,7 @@ document.getElementById('message').style.display = 'block';
 //Ability Score Dice Roll
 let totalSum = 0;
 let abilityScoreResults = [];// Array to store individual results globally
+let currentButtonIndex = 0;
 
 
 function rollDice(buttonId, scoreName) {
@@ -64,20 +61,29 @@ function rollDice(buttonId, scoreName) {
 
   // Update total sum
   totalSum += sumTop3;
-  
 
-  // Hide the button
-  const rollButton = document.getElementById(buttonId);
-  rollButton.style.display = 'none';
+  // Hide the current button
+  const currentButton = document.getElementById(buttonId);
+  currentButton.style.display = 'none';
+
+  // Increment the currentButtonIndex to show the next button
+  currentButtonIndex++;
+
+  // Show the next button
+  if (currentButtonIndex < 6) {
+    const nextButton = document.getElementById(`button${currentButtonIndex + 1}`);
+    nextButton.style.display = 'inline-block';
+  }
 
   // Check if all buttons in 'diceButtons' are hidden
   const diceButtons = document.getElementById('diceButtons');
   const allButtonsHidden = Array.from(diceButtons.querySelectorAll('button')).every(button => button.style.display === 'none');
 
+
   // Display total sum after the last button is pressed
   if (allButtonsHidden) {
     const totalResultElement = document.getElementById('totalResult');
-    totalResultElement.textContent = `Your ability score rolls totaled: ${totalSum}.`;
+    //totalResultElement.textContent = `Your ability score rolls totaled: ${totalSum}.`;
     suggestAClass();
   
   //Calculate modifiers and display the after each roll
@@ -338,11 +344,14 @@ function suggestAClass() {
     elegibleClasses.push("Ranger (Str Based)")}; 
   
   if (elegibleClasses.length === 0) {
-    suggestedClass.innerText = ("None. Your stats are low or not optimal. Consider rolling a new character.")}; 
+    suggestedClass.innerText = ("None. Your stats are low or not optimal. \n \n Consider rolling a new character, or continue with the stats you were dealt.")}; 
   suggestedClass.innerText += elegibleClasses.join(', ');
 }
  
 
+
+// HP (Based on class choice)
+let startingHP;
 
 function showClassContent() {
       var charClassDropdown = document.getElementById("charClassDropdown");
@@ -358,6 +367,18 @@ function showClassContent() {
       var sorContent = document.getElementById("sorcererText");
       var wizContent = document.getElementById("wizardText");
 
+      var bbnStartingHPText = document.getElementById("bbnStartingHPText");
+      var brdStartingHPText = document.getElementById("brdStartingHPText");
+      var clrStartingHPText = document.getElementById("clrStartingHPText");
+      var drdStartingHPText = document.getElementById("drdStartingHPText");
+      var ftrStartingHPText = document.getElementById("ftrStartingHPText");
+      var mnkStartingHPText = document.getElementById("mnkStartingHPText");
+      var palStartingHPText = document.getElementById("palStartingHPText");
+      var rgrStartingHPText = document.getElementById("rgrStartingHPText");
+      var rogStartingHPText = document.getElementById("rogStartingHPText");
+      var sorStartingHPText = document.getElementById("sorStartingHPText");
+      var wizStartingHPText = document.getElementById("wizStartingHPText");
+
 
       // Hide all the Classes info, this keeps it from piling on
       bbnContent.style.display = 'none';
@@ -372,39 +393,72 @@ function showClassContent() {
       sorContent.style.display = 'none';
       wizContent.style.display = 'none';
 
+
+
       if (charClassDropdown.value === "barbarian") {
           bbnContent.style.display = "block";
-          startingGold = 100;
-          startingGoldText.innerText = '100';
-
           startingHP = 12 + conModifier;
-          startingHPText.innerText = startingHP;
-      } else if (charClassDropdown.value === "bard") {
+          bbnStartingHPText.innerText = startingHP;
+      } 
+      
+      if (charClassDropdown.value === "bard") {
           brdContent.style.display = "block";
-      } else if (charClassDropdown.value === "cleric") {
+          startingHP = 6 + conModifier;
+          brdStartingHPText.innerText = startingHP;
+      }  
+      
+      if (charClassDropdown.value === "cleric") {
           clrContent.style.display = "block";
-      } else if(charClassDropdown.value === "druid") {
+          startingHP = 8 + conModifier;
+          clrStartingHPText.innerText = startingHP;
+      } 
+      
+      if(charClassDropdown.value === "druid") {
           drdContent.style.display = "block";
-      } else if (charClassDropdown.value === "fighter") {
+          startingHP = 8 + conModifier;
+          drdStartingHPText.innerText = startingHP;
+      }
+      
+      if (charClassDropdown.value === "fighter") {
           ftrContent.style.display = "block";
-      } else if (charClassDropdown.value === "cleric"){
-          clrContent.style.display = "block";
-      } else if (charClassDropdown.value === "monk") {
+          startingHP = 10 + conModifier;
+          ftrStartingHPText.innerText = startingHP;
+      }
+      
+      if (charClassDropdown.value === "monk") {
           mnkContent.style.display = "block";
-      } else if (charClassDropdown.value === "paladin") {
+          startingHP = 8 + conModifier;
+          mnkStartingHPText.innerText = startingHP;
+      }
+      
+      if (charClassDropdown.value === "paladin") {
           palContent.style.display = "block";
-      } else if (charClassDropdown.value === "ranger"){
+          startingHP = 10 + conModifier;
+          palStartingHPText.innerText = startingHP;
+      }
+      
+      if (charClassDropdown.value === "ranger"){
           rgrContent.style.display = "block";
-      } else if (charClassDropdown.value === "rogue") {
+          startingHP = 8 + conModifier;
+          rgrStartingHPText.innerText = startingHP;
+      }
+      
+      if (charClassDropdown.value === "rogue") {
           rogContent.style.display = "block";
-      } else if (charClassDropdown.value === "sorcerer"){
+          startingHP = 6 + conModifier;
+          rogStartingHPText.innerText = startingHP;
+      }
+      
+      if (charClassDropdown.value === "sorcerer"){
           sorContent.style.display = "block";
           startingHP = 4 + conModifier;
-          startingHPText.innerText = startingHP;
-      } else if (charClassDropdown.value === "wizard") {
+          sorStartingHPText.innerText = startingHP;      
+        }
+      
+      if (charClassDropdown.value === "wizard") {
           wizContent.style.display = "block";
           startingHP = 4 + conModifier;
-          startingHPText.innerText = startingHP;
+          wizStartingHPText.innerText = startingHP;
       }
     } 
     
@@ -464,20 +518,22 @@ const races = [
 ]
 
 
-// Choose Class
-var selectedClass;
-function updateClassSelection(value) {
-        selectedClass = value;
-        //display class info based on Check
-        if (selectedClass === 'Barbarian') {
-        document.getElementById("raceResultText").innerText = races[0].description;
-        document.getElementById("raceResultText").innerText += "\n \n Racial Trait Bonuses: " + races[0].racialBonuses;
-        document.getElementById("raceResultText").innerText += "\n \n Ability Score Adjustments: " + races[0].adjustments;
-        document.getElementById("raceResultText").innerText += "\n \n Favored Class: " + races[0].favoredClass;
+// //Choose Class NOT SURE IF I NEED THIS.
+// var selectedClass;
+// function updateClassSelection(value) {
+//         selectedClass = value;
+//         //display class info based on Check
+//         if (selectedClass === 'Barbarian') {
+//         document.getElementById("raceResultText").innerText = races[0].description;
+//         document.getElementById("raceResultText").innerText += "\n \n Racial Trait Bonuses: " + races[0].racialBonuses;
+//         document.getElementById("raceResultText").innerText += "\n \n Ability Score Adjustments: " + races[0].adjustments;
+//         document.getElementById("raceResultText").innerText += "\n \n Favored Class: " + races[0].favoredClass;
         
 
-        }
-      }
+//         }
+//       }
+
+
 
 // Choose Race
 

@@ -2,20 +2,47 @@
 	text-align:center;
 }
 
-/* Font Styles */
-
-/* Button Styles */
 
 /* Dark Mode */
 body {
-  background-color: black;
-  color:white;
+  background-color: #21260E;
   font-family: monospace;
+  padding-left: 20px;
+  color: #F2CFBB;
 }
 
+h1, h2, h3, h4, h5, pre {
+  color: #F2385A;
+}
+
+#logo {
+  text-align: center;
+}
+
+/* Font Styles */
+
+
+/* Button Styles */
 button {
   cursor: pointer;
 }
+
+#diceButtons {
+  max-width: 250px;
+
+}
+
+#diceButtons button {
+  float: right;
+  border: 2px solid #F2CFBB;
+  font-family: monospace;
+  color: #F2CFBB;
+  background-color: #21260E;
+  font-size: 13px;
+}
+
+#button2, #button3, #button4, #button5, #button6 {
+  display: none;
 }
 
 #hero {
@@ -29,23 +56,10 @@ button {
  li {
       list-style: none;
       margin-bottom: 10px;
-    }
-#chooseClass {
- 
-}
-
+    } 
+    
+    
 #barbarianText, #bardText, #clericText, #druidText, #fighterText, #monkText, #paladinText, #rangerText, #rogueText, #sorcererText, #wizardText {
-  display: none;
-}
-
-#diceButtons {
-  max-width: 250px;
-  background-color: ;
-}
-
-#diceButtons button {
-  float: right;
-  border: 1px solid white;
-  background-color: black;
-  color:white;
-  font-size: 13px;
+      display: none;
+    }
+    

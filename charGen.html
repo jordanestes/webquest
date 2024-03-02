@@ -7,28 +7,46 @@
   <title>Character Generator | WebQuest RPG</title>
 </head>
 <body>
-<h1>Create a new character</h1>
+  
+<pre id="logo">
+                                                                                                                   
+                                                                                                                   
+  ____              ___       ___                                                   ________    ________      ____   
+  `Mb(      db      )d'        MM                                                   `MMMMMMMb.  `MMMMMMMb.   6MMMMb/ 
+   YM.     ,PM.     ,P         MM                                             /      MM    `Mb   MM    `Mb  8P    YM 
+   `Mb     d'Mb     d'  ____   MM____     ____   ___   ___   ____     ____   /M      MM     MM   MM     MM 6M      Y 
+    YM.   ,P YM.   ,P  6MMMMb  MMMMMMb   6MMMMb/ `MM    MM  6MMMMb   6MMMMb\/MMMMM   MM     MM   MM     MM MM        
+    `Mb   d' `Mb   d' 6M'  `Mb MM'  `Mb 6M'  `MM  MM    MM 6M'  `Mb MM'    ` MM      MM    .M9   MM    .M9 MM        
+     YM. ,P   YM. ,P  MM    MM MM    MM MM    MM  MM    MM MM    MM YM.      MM      MMMMMMM9'   MMMMMMM9' MM     ___
+     `Mb d'   `Mb d'  MMMMMMMM MM    MM MM    MM  MM    MM MMMMMMMM  YMMMMb  MM      MM  \M\     MM        MM     `M'
+      YM,P     YM,P   MM       MM    MM MM    MM  MM    MM MM            `Mb MM      MM   \M\    MM        YM      M 
+      `MM'     `MM'   YM    d9 MM.  ,M9 YM.  ,MM  YM.   MM YM    d9 L    ,MM YM.  ,  MM    \M\   MM         8b    d9 
+       YP       YP     YMMMM9 _MYMMMM9   YMMMM9M   YMMM9MM_ YMMMM9  MYMMMM9   YMMM9 _MM_    \M\__MM_         YMMMM9  
+                                              MM                                                                     
+                                              MM                                                                     
+                                             _MM_                                                                    
+  </pre>
+                                                                                                                   
+<h1>CHARACTER GENERATOR</h1>
 <label for="nameInput">You shall be known as:</label><p id="message" style="display: none;"></p>
   <input placeholder="Name" type="text" id="nameInput">
   <button onclick="saveName()">Save Name</button>
     
   <hr>
+
 <div id="diceButtons">  
 <h3>Roll Your Ability Scores</h3>
-<p style="color:red">Roll in order:</p>
-
-
-Strength:<button id="button1" onclick="rollDice('button1', 'Strength')">Roll Dice</button><span id="result1"></span><span style="color:yellow" id="strModifierText"></span>
+Strength [STR] <button id="button1" onclick="rollDice('button1', 'Strength')">Roll Dice</button><span id="result1"></span><span style="color:#F2385A" id="strModifierText"></span>
 <br><br>
-Dexterity:<button id="button2" onclick="rollDice('button2', 'Dexterity')">Roll Dice</button><span id="result2"></span><span style="color:yellow" id="dexModifierText"></span>
+Dexterity [DEX]<button id="button2" onclick="rollDice('button2', 'Dexterity')">Roll Dice</button><span id="result2"></span><span style="color:#F2385A" id="dexModifierText"></span>
 <br><br>
-Constitution:<button id="button3" onclick="rollDice('button3', 'Constitution')">Roll Dice</button><span id="result3"></span><span style="color:yellow" id="conModifierText"></span>
+Constitution [CON]<button id="button3" onclick="rollDice('button3', 'Constitution')">Roll Dice</button><span id="result3"></span><span style="color:#F2385A" id="conModifierText"></span>
 <br><br>
-Intelligence:<button id="button4" onclick="rollDice('button4', 'Intelligence')">Roll Dice</button><span id="result4"></span><span style="color:yellow" id="intModifierText"></span>
+Intelligence [INT]<button id="button4" onclick="rollDice('button4', 'Intelligence')">Roll Dice</button><span id="result4"></span><span style="color:#F2385A" id="intModifierText"></span>
 <br><br>
-Wisdom:<button id="button5" onclick="rollDice('button5', 'Wisdom')">Roll Dice</button><span id="result5"></span><span style="color:yellow" id="wisModifierText"></span>
+Wisdom [WIS]<button id="button5" onclick="rollDice('button5', 'Wisdom')">Roll Dice</button><span id="result5"></span><span style="color:#F2385A" id="wisModifierText"></span>
 <br><br>
-Charisma:<button id="button6" onclick="rollDice('button6', 'Charisma')">Roll Dice</button><span id="result6"></span><span style="color:yellow" id="chaModifierText"></span>
+Charisma [CHA]<button id="button6" onclick="rollDice('button6', 'Charisma')">Roll Dice</button><span id="result6"></span><span style="color:#F2385A" id="chaModifierText"></span>
 </div>
 
 <span style="font-weight:900;"><p id="totalResult"></p></span>
@@ -38,7 +56,7 @@ Charisma:<button id="button6" onclick="rollDice('button6', 'Charisma')">Roll Dic
 <!-- Classes -->
 <div id="chooseClass">
 <h3>Choose Your Class:</h3>
-<p><em>Based on your ability score results, your recommended class would be: <span style="color:yellow" id="suggestedClass"></span></em></p>
+<p><em>Based on your ability score results, your recommended class would be: <span style="color:#F2385A" id="suggestedClass"></span></em></p>
 <form>
   <label for="charClassDropdown">Select a class:</label>
   <select id="charClassDropdown" onchange="showClassContent()">
@@ -56,50 +74,64 @@ Charisma:<button id="button6" onclick="rollDice('button6', 'Charisma')">Roll Dic
     <option value="wizard">Wizard</option>
   </select>
 </form>
-  <div id="barbarianText">
-    <p><strong>Barbarian:</strong> <em>A ferocious warrior who uses fury and instinct to bring down foes.</em></p>
-    <p>As a Barbarian, your starting Hit Points: <span id="startingHpText"></span><em></em></p>
-    <p><strong>Abilities:</strong> Strength is important for barbarians because of its role
-in combat, and several barbarian class skills are based on Strength. Dexterity is also useful to barbarians, especially those who wear light armor. Wisdom is also important for several of the barbarian’s class skills. A high Constitution score lets a barbarian rage longer (and live longer, because it gives him more hit points).</p>
-<p>Hit Points Gained Per Level: <strong>d12.</strong></p>
-<p><strong>Class skills</strong>
-  <p>Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha), Jump (Str), Listen (Wis), Ride (Dex), Survival (Wis), Swim (Str)</p>
-<p>Skill Points at 1st Level: <strong>(4 + Int modifier) × 4.</strong></p>
-<p>Skill Points at Each Additional Level: <strong>4 + Int modifier.</strong></p>
-<p><strong>Lv1 Class Features</strong></p>
-<p>Weapon and Armor Proficiency, Illiteracy, Rage (1x per day, +4 STR, a
-+4 CON, -2 AC)</p>
-  </div>
-    <div id="bardText">
+
+<div id="barbarianText">
+    <p><strong>The BARBARIAN is a ferocious warrior who uses fury and instinct to bring down foes.</strong></p>
+    <p style="color:#F2385A">Starting Hit Points: <span id="bbnStartingHPText"></span><em> (each additional level: d12+CON modifer)</em></p>
+    <p style="color:#F2385A">Starting Gold: <span id="bbnStartingGoldText"></span> gp</p>
+    </div>
+
+<div id="bardText">
     <p><strong>Bard:</strong> A performer whose music works magic—a wanderer, a tale- teller, and a jack-of-all trades.</p>
-  </div>
+    <p style="color:#F2385A">Starting Hit Points: <span id="brdStartingHPText"></span><em> (each additional level: d6+CON modifer)</em></p>
+    <p style="color:#F2385A">Starting Gold: <span id="brdStartingGoldText"></span> gp</p>
+</div>
+
     <div id="clericText">
-    <p><strong>Cleric:</strong> A master of divine magic and a capable warrior as well.</p>
-  </div>
-  <div id="druidText">
-    <p><strong>Druid:</strong> One who draws energy from the natural world to cast divine spells and gain strange magical powers.</p>
+    <p><strong>The CLERIC is a master of divine magic and a capable warrior as well.</strong></p>
+    <p style="color:lime">Starting Hit Points: <span id="clrStartingHPText"></span><em> (each additional level: d8+CON modifer)</em></p>
+    <p style="color:gold">Starting Gold: <span id="clrStartingGoldText"></span> gp</p>
+</div>
+    <div id="druidText">
+    <p><strong>The fury of a storm, the gentle strength of the morning sun, the cunning of the fox, the power of the bear—all these and more are at the DRUID'S command.</strong></p>
+    <p style="color:lime">Starting Hit Points: <span id="drdStartingHPText"></span><em> (each additional level: d8+CON modifer)</em></p>
+    <p>Bards start with <span class="startingGoldText"></span> gp to spend on equipment and items.</p>
   </div>
   <div id="fighterText">
-    <p><strong>Fighter:</strong>A warrior with exceptional combat capability and unequaled skill with weapons.</p>
-  </div>
-  <div id="monkText">
-    <p><strong>Monk:</strong>A martial artist whose unarmed strikes hit fast and hard— a master of exotic powers.</p>
+    <p><strong>Druid:</strong> One who draws energy from the natural world to cast divine spells and gain strange magical powers.</p>
+    <p style="color:lime">Starting Hit Points: <span id="ftrStartingHPText"></span><em> (each additional level: d4+CON modifier)</em></p>
+    <p>Barbarians start with <span class="startingGoldText"></span> gp to spend on equipment and items.</p>
+</div>
+    <div id="monkText">
+    <p><strong>Bard:</strong> A performer whose music works magic—a wanderer, a tale- teller, and a jack-of-all trades.</p>
+    <p style="color:lime">Starting Hit Points: <span id="mnkStartingHPText"></span><em>, and each level thereafter you gain d6+CON modifier</em></p>
+    <p>Bards start with <span class="startingGoldText"></span> gp to spend on equipment and items.</p>
   </div>
   <div id="paladinText">
-    <p><strong>Paladin:</strong>A champion of justice and destroyer of evil, protected and strengthened by an array of divine powers.</p>
-  </div>
-  <div id="rangerText">
-    <p><strong>Ranger:</strong>A cunning, skilled warrior of the wilderness.</p>
+    <p><strong>Fighter:</strong>A warrior with exceptional combat capability and unequaled skill with weapons.</p>
+    <p style="color:lime">Starting Hit Points: <span id="palStartingHPText"></span><em>, and each level thereafter you gain d12+CON modifier</em></p>
+    <p>Barbarians start with <span class="startingGoldText"></span> gp to spend on equipment and items.</p></div>
+    <div id="rangerText">
+    <p><strong>Bard:</strong> A performer whose music works magic—a wanderer, a tale- teller, and a jack-of-all trades.</p>
+    <p style="color:lime">Starting Hit Points: <span id="rgrStartingHPText"></span><em>, and each level thereafter you gain d6+CON modifier</em></p>
+    <p>Bards start with <span class="startingGoldText"></span> gp to spend on equipment and items.</p>
   </div>
   <div id="rogueText">
-    <p><strong>Rogue:</strong>A tricky, skillful scout and spy who wins the battle by stealth rather than brute force.</p>
+    <p><strong>Monk:</strong>A martial artist whose unarmed strikes hit fast and hard— a master of exotic powers.</p>
+    <p style="color:lime">Starting Hit Points: <span id="rogStartingHPText"></span><em>(d12+CON modifer per level)</em></p>
+    <p style="color:gold">Barbarians start with <span class="startingGoldText"></span> gp to spend on equipment and items.</p>
+</div>
+    
+<div id="sorcererText">
+    <p>SORCERERS create magic the way a poet creates poems, with inborn talent honed by practice.</p>
+    <p style="color:lime">Starting Hit Points: <span id="sorStartingHPText"></span><em> (each additional level: d4+CON modifier)</em></p>
+    <p style="color:gold">Bards start with <span class="startingGoldText"></span> gp to spend on equipment and items.</p>
   </div>
-  <div id="sorcererText">
-    <p><strong>Sorcerer:</strong>A spellcaster with inborn magical ability.</p>
-  </div>
+
   <div id="wizardText">
-    <p><strong>Wizard:</strong>A potent spellcaster schooled in the arcane arts.</p>
-  </div>
+    <p><strong>A few unintelligible words and fleeting gestures carry more power than a battleaxe, when they are the words and gestures of a WIZARD.</p>
+    <p style="color:lime">Starting Hit Points: <span id="wizStartingHPText"></span><em> (each additional level: d4+CON modifier)</em></p>
+    <p style="color:gold">Starting Gold:<span class="startingGoldText"></span>gp</p>
 </div>
 
 <hr>
@@ -142,10 +174,11 @@ in combat, and several barbarian class skills are based on Strength. Dexterity i
 <br>
 <hr>
 <h2>Lastly, Before You Begin:</h2>
-<p>Your starting Hit Points: <span id="startingHpText"></span><em> (based on class)</em></p>
 <p>Your character starts out with basic clothing, and some gold you were gifted to by family.</p>
 <p>Based on your chosen class, you will start with <span id="startingGoldText"></span> gp to spend on equipment and items.</p>
 <button id="begin">Begin Your Journey...</button>
+
+<p style="color:lime">Starting Hit Points: <span class="startingHpText"></span><em>, and each level thereafter you gain d6+CON modifier</em></p>
 
 <script type="text/javascript" src="charscript.js"></script>
 </body>
