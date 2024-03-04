@@ -8,10 +8,6 @@ let intelligence;
 let wisdom;
 let charisma;
 
-// Gold (based on class choice)
-let startingGoldText = document.querySelector(".startingGoldText");
-let startingGold; 
-startingGoldText.innerText = "0";
 
 // Save Character name, need to change this for it to be accessible
 
@@ -353,6 +349,104 @@ function suggestAClass() {
 // HP (Based on class choice)
 let startingHP;
 
+// Starting Gold (Based on class choice)
+
+let startingGold; 
+let bbnStartingGoldText = document.getElementById("bbnStartingGoldText"); 
+let brdStartingGoldText = document.getElementById("brdStartingGoldText"); 
+let clrStartingGoldText = document.getElementById("clrStartingGoldText");
+let drdStartingGoldText = document.getElementById("drdStartingGoldText");
+let ftrStartingGoldText = document.getElementById("ftrStartingGoldText"); 
+let mnkStartingGoldText = document.getElementById("mnkStartingGoldText");
+let palStartingGoldText = document.getElementById("palStartingGoldText");
+let rgrStartingGoldText = document.getElementById("rgrStartingGoldText");
+let rogStartingGoldText = document.getElementById("rogStartingGoldText");
+let sorStartingGoldText = document.getElementById("sorStartingGoldText");
+let wizStartingGoldText = document.getElementById("wizStartingGoldText");
+
+// BBN Gold Roll
+const bbnGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+                   Math.floor(Math.random() * 4) + 1 +
+                   Math.floor(Math.random() * 4) + 1;
+const bbnGoldResult = bbnGoldRoll * 10;
+
+// BRD Gold Roll
+const brdGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+                   Math.floor(Math.random() * 4) + 1 +
+                   Math.floor(Math.random() * 4) + 1;
+const brdGoldResult = brdGoldRoll * 10;
+// CLR Gold Roll
+const clrGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+                   Math.floor(Math.random() * 4) + 1 +
+                   Math.floor(Math.random() * 4) + 1+
+				   Math.floor(Math.random() * 4) + 1;
+const clrGoldResult = clrGoldRoll * 10;
+// DRD Gold Roll
+const drdGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const drdGoldResult = drdGoldRoll * 10;
+
+// FTR Gold Roll
+const ftrGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const ftrGoldResult = ftrGoldRoll * 10;
+
+// MNK Gold Roll
+const mnkGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const mnkGoldResult = mnkGoldRoll;
+// PAL Gold Roll
+const palGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const palGoldResult = palGoldRoll * 10;
+
+// RGR Gold Roll
+const rgrGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const rgrGoldResult = rgrGoldRoll * 10;
+
+// ROG Gold Roll
+const rogGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const rogGoldResult = rogGoldRoll * 10;
+// SOR Gold Roll
+const sorGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const sorGoldResult = sorGoldRoll * 10;
+
+// WIZ Gold Roll
+const wizGoldRoll = Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1 +
+					Math.floor(Math.random() * 4) + 1;
+const wizGoldResult = wizGoldRoll * 10;
+
+// Skill Points (Based on Class)
+let skillPointsRemaining = 0;
+let skillPointsText = document.getElementById("skillPointsText");
+skillPointsText.innerText = skillPointsRemaining;
+
 function showClassContent() {
       var charClassDropdown = document.getElementById("charClassDropdown");
       var bbnContent = document.getElementById("barbarianText");
@@ -399,66 +493,110 @@ function showClassContent() {
           bbnContent.style.display = "block";
           startingHP = 12 + conModifier;
           bbnStartingHPText.innerText = startingHP;
+		  startingGold = bbnGoldResult;
+		  bbnStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (4+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (4 + Int modifier) × 4, and each additional level grants you 4+INT modifier.";
       } 
       
       if (charClassDropdown.value === "bard") {
           brdContent.style.display = "block";
           startingHP = 6 + conModifier;
           brdStartingHPText.innerText = startingHP;
+		  startingGold = brdGoldResult;
+		  brdStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (6+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (6 + Int modifier) × 4, and each additional level grants you 6 + INT modifier.";
       }  
       
       if (charClassDropdown.value === "cleric") {
           clrContent.style.display = "block";
           startingHP = 8 + conModifier;
           clrStartingHPText.innerText = startingHP;
+		  startingGold = clrGoldResult;
+		  clrStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (2+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (2 + Int modifier) × 4, and each additional level grants you 2 + INT modifier.";
       } 
       
       if(charClassDropdown.value === "druid") {
           drdContent.style.display = "block";
           startingHP = 8 + conModifier;
           drdStartingHPText.innerText = startingHP;
+		  startingGold = drdGoldResult;
+		  drdStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (4+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (4 + Int modifier) × 4, and each additional level grants you 6 + INT modifier.";
       }
       
       if (charClassDropdown.value === "fighter") {
           ftrContent.style.display = "block";
           startingHP = 10 + conModifier;
           ftrStartingHPText.innerText = startingHP;
+		  startingGold = ftrGoldResult;
+		  ftrStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (2+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (2 + Int modifier) × 4, and each additional level grants you 2 + INT modifier.";
       }
       
       if (charClassDropdown.value === "monk") {
           mnkContent.style.display = "block";
           startingHP = 8 + conModifier;
           mnkStartingHPText.innerText = startingHP;
+		  startingGold = mnkGoldResult;
+		  mnkStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (4+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (4 + Int modifier) × 4, and each additional level grants you 6 + INT modifier.";
       }
       
       if (charClassDropdown.value === "paladin") {
           palContent.style.display = "block";
           startingHP = 10 + conModifier;
           palStartingHPText.innerText = startingHP;
+		  startingGold = palGoldResult;
+		  palStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (2+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (2 + Int modifier) × 4, and each additional level grants you 2 + INT modifier.";
       }
       
       if (charClassDropdown.value === "ranger"){
           rgrContent.style.display = "block";
           startingHP = 8 + conModifier;
           rgrStartingHPText.innerText = startingHP;
+		  startingGold = rgrGoldResult;
+		  rgrStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (6+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (6 + Int modifier) × 4, and each additional level grants you 6 + INT modifier.";
       }
       
       if (charClassDropdown.value === "rogue") {
           rogContent.style.display = "block";
           startingHP = 6 + conModifier;
           rogStartingHPText.innerText = startingHP;
+		  startingGold = rogGoldResult;
+		  rogStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (8+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (8 + Int modifier) × 4, and each additional level grants you 8 + INT modifier.";
       }
       
       if (charClassDropdown.value === "sorcerer"){
           sorContent.style.display = "block";
           startingHP = 4 + conModifier;
-          sorStartingHPText.innerText = startingHP;      
+          sorStartingHPText.innerText = startingHP;
+		  startingGold = sorGoldResult;
+		  sorStartingGoldText.innerHTML = startingGold;		
+		  skillPointsRemaining = (2+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (2 + Int modifier) × 4, and each additional level grants you 2 + INT modifier.";		  
         }
       
       if (charClassDropdown.value === "wizard") {
           wizContent.style.display = "block";
           startingHP = 4 + conModifier;
           wizStartingHPText.innerText = startingHP;
+		  startingGold = wizGoldResult;
+		  wizStartingGoldText.innerHTML = startingGold;
+		  skillPointsRemaining = (2+intModifier)*4;
+		  skillPointsText.innerHTML = skillPointsRemaining + " (2 + Int modifier) × 4, and each additional level grants you 2 + INT modifier.";
       }
     } 
     
@@ -587,13 +725,11 @@ const races = [
     }
 	}
 
-// Skill Points
-
-let skillPointsRemaining = 0;
-const skillPointsText = document.querySelector("#skillPointsText");
-skillPointsText.innerText = skillPointsRemaining;
 
 
+function skillPointsUpdate() {
+	
+}
 
 // Final Calculations: HP, Gold
 
